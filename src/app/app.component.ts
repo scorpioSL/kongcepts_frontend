@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   constructor(
     private analytics: AnalyticsService,
     private seoService: SeoService,
-    private store: Store<AppState>
+    private store: Store<AppState>,
   ) {
   }
 

@@ -1,12 +1,12 @@
-import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
-import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { of } from "rxjs";
-import { catchError, map, mergeMap, tap } from "rxjs/operators";
-import { environment } from "../../../environments/environment";
-import { AuthService } from "../../shared/services/auth.service";
-import { Employee } from "../../store/models/employee.model";
-import { login, login_failure, login_success, logout, who_am_i, who_am_i_failure, who_am_i_success } from "./auth.actions";
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { of } from 'rxjs';
+import { catchError, map, mergeMap, tap } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
+import { AuthService } from '../../shared/services/auth.service';
+import { Employee } from '../../store/models/employee.model';
+import { login, login_failure, login_success, logout, who_am_i, who_am_i_failure, who_am_i_success } from './auth.actions';
 
 @Injectable()
 export class AuthEffects {
@@ -21,7 +21,7 @@ export class AuthEffects {
     public login$ = createEffect(() => {
         return this.actions$.pipe(ofType(login), mergeMap(action => {
             return this.authService.login(
-                action
+                action,
             ).pipe(
                 map((data: { jwt: string }) => {
                     localStorage.setItem(environment.token_key, data.jwt);
@@ -30,7 +30,7 @@ export class AuthEffects {
                 catchError((error: any) => {
                     return of(login_failure(error));
                 }),
-            )
+            );
         }));
     });
 
@@ -44,9 +44,9 @@ export class AuthEffects {
                 catchError((error: any) => {
                     localStorage.removeItem(environment.token_key);
                     return of(who_am_i_failure());
-                })
-            )
-        }))
+                }),
+            );
+        }));
     });
 
     public whoAmI$ = createEffect(() => {
@@ -59,15 +59,15 @@ export class AuthEffects {
                 catchError((error: any) => {
                     localStorage.removeItem(environment.token_key);
                     return of(who_am_i_failure());
-                })
-            )
-        }))
+                }),
+            );
+        }));
     });
 
     public whoAmISuccessRedirect$ = createEffect(() => {
         return this.actions$.pipe(ofType(who_am_i_success), tap((action) => {
             this.router.navigate(['/employee']);
-        }))
+        }));
     }, { dispatch: false });
 
     public whoAmIFailureRedirect$ = createEffect(() => {

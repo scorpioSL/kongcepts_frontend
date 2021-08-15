@@ -4,7 +4,7 @@ import { EMPLOYEE_MENU_ITEMS } from './employee-menu';
 @Component({
   selector: 'ngx-employee',
   templateUrl: './employee.component.html',
-  styleUrls: ['./employee.component.scss']
+  styleUrls: ['./employee.component.scss'],
 })
 export class EmployeeComponent {
 

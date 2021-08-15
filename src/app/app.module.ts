@@ -48,14 +48,14 @@ import { AppHttpInterceptor } from './shared/interceptor/app-http.interceptor';
     ThemeModule.forRoot(),
     EffectsModule.forRoot([AuthEffects]),
     StoreModule.forRoot(appReducer),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AppHttpInterceptor,
-      multi: true
-    }
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

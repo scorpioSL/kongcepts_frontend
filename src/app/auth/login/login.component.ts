@@ -12,7 +12,7 @@ import { getError, getLoading } from '../store/auth.selector';
 @Component({
   selector: 'ngx-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent extends NbLoginComponent implements OnInit {
 

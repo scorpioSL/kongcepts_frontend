@@ -10,4 +10,4 @@ export const initialState: EmployeeState = {
     employees: [],
     loading: false,
     error: null,
-}
+};

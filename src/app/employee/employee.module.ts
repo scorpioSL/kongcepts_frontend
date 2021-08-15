@@ -23,6 +23,6 @@ import { EmployeeEffects } from './store/employee.effects';
     SharedModule,
     EffectsModule.forFeature([EmployeeEffects]),
     StoreModule.forFeature(EMPLOYEE_STATE_NAME, employeeReducer),
-  ]
+  ],
 })
 export class EmployeeModule { }

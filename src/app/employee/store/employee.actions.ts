@@ -1,6 +1,6 @@
-import { createAction, props } from "@ngrx/store";
-import { SharedQueryModel } from "../../shared/models/shared-query.model";
-import { Employee } from "../../store/models/employee.model";
+import { createAction, props } from '@ngrx/store';
+import { SharedQueryModel } from '../../shared/models/shared-query.model';
+import { Employee } from '../../store/models/employee.model';
 
 export const QUERY = '[EMPLOYEE] query';
 export const QUERY_SUCCESS = '[EMPLOYEE] query success';

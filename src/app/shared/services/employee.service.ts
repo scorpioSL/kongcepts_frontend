@@ -1,21 +1,19 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, Injector } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { Employee } from '../../store/models/employee.model';
 import { SharedQueryModel } from '../models/shared-query.model';
-import { BaseService } from './base.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class EmployeeService extends BaseService {
+export class EmployeeService {
   readonly url: string = `${environment.base_endpoint}/employee/`;
-  constructor(private http: HttpClient, injector: Injector) {
-    super(injector);
+  constructor(private http: HttpClient) {
   }
 
   public query(model?: SharedQueryModel): Observable<any> {
-    return this.http.get<Array<Employee>>(`${this.url}query`, this.headers());
+    return this.http.get<Array<Employee>>(`${this.url}query`);
   }
 }

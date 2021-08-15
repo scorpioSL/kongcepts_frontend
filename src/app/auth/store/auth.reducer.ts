@@ -1,6 +1,6 @@
-import { createReducer, on } from "@ngrx/store";
-import { login, login_failure, login_success, who_am_i_failure, who_am_i_success } from "./auth.actions";
-import { initialState } from "./auth.state";
+import { createReducer, on } from '@ngrx/store';
+import { login, login_failure, login_success, who_am_i_failure, who_am_i_success } from './auth.actions';
+import { initialState } from './auth.state';
 
 const _authReducer = createReducer(initialState
     ,
@@ -9,20 +9,20 @@ const _authReducer = createReducer(initialState
             ...state,
             loading: true,
             error: null,
-        }
+        };
     }),
     on(login_success, (state, action) => {
         return {
             ...state,
             jwt: action.jwt,
-        }
+        };
     }),
     on(login_failure, (state, action) => {
         return {
             ...state,
             loading: false,
             error: action.error,
-        }
+        };
     }),
     on(who_am_i_success, (state, action) => {
         return {
@@ -30,14 +30,14 @@ const _authReducer = createReducer(initialState
             user: action.employee,
             jwt: action.jwt,
             loading: false,
-        }
+        };
     }),
     on(who_am_i_failure, (state, action) => {
         return {
             ...state,
             user: null,
             loading: false,
-        }
+        };
     }),
 );
 

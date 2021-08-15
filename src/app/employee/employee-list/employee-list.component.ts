@@ -11,7 +11,7 @@ import { getEmployees, getLoading } from '../store/employee.selector';
 @Component({
   selector: 'ngx-employee-list',
   templateUrl: './employee-list.component.html',
-  styleUrls: ['./employee-list.component.scss']
+  styleUrls: ['./employee-list.component.scss'],
 })
 export class EmployeeListComponent implements OnInit, OnDestroy {
 
@@ -75,7 +75,7 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
       this.store.select(getEmployees).subscribe(
         (employees: Array<Employee>) => {
           this.employees = employees;
-          this.source.load(this.employees)
+          this.source.load(this.employees);
         }),
     );
   }

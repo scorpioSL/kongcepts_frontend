@@ -1,4 +1,4 @@
-import { Employee } from "../../store/models/employee.model";
+import { Employee } from '../../store/models/employee.model';
 
 export interface AuthState {
     jwt: string;

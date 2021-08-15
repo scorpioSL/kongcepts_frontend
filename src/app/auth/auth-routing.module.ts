@@ -13,13 +13,13 @@ const routes: Routes = [
         component: LoginComponent,
       },
       { path: '', redirectTo: 'login' },
-      { path: '**', redirectTo: 'login' }
-    ]
-  }
+      { path: '**', redirectTo: 'login' },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AuthRoutingModule { }

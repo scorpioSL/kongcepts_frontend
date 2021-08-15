@@ -1,5 +1,5 @@
-import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { EmployeeState } from "./employee.state";
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { EmployeeState } from './employee.state';
 
 export const EMPLOYEE_STATE_NAME = 'employees';
 const getEmployeesState = createFeatureSelector<EmployeeState>(EMPLOYEE_STATE_NAME);

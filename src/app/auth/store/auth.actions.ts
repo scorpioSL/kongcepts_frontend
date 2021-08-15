@@ -1,5 +1,5 @@
-import { createAction, props } from "@ngrx/store";
-import { Employee } from "../../store/models/employee.model";
+import { createAction, props } from '@ngrx/store';
+import { Employee } from '../../store/models/employee.model';
 
 export const LOGIN = '[AUTH] login';
 export const LOGIN_SUCCESS = '[AUTH] login success';

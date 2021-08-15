@@ -11,13 +11,13 @@ import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     CommonModule,
     AuthRoutingModule,
     SharedModule,
-    StoreModule.forFeature(AUTH_STATE_NAME, AuthReducer)
-  ]
+    StoreModule.forFeature(AUTH_STATE_NAME, AuthReducer),
+  ],
 })
 export class AuthModule { }

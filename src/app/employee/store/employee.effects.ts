@@ -1,10 +1,10 @@
-import { Injectable } from "@angular/core";
-import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { of } from "rxjs";
-import { catchError, map, mergeMap } from "rxjs/operators";
-import { EmployeeService } from "../../shared/services/employee.service";
-import { Employee } from "../../store/models/employee.model";
-import { query, query_failure, query_success } from "./employee.actions";
+import { Injectable } from '@angular/core';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+import { of } from 'rxjs';
+import { catchError, map, mergeMap } from 'rxjs/operators';
+import { EmployeeService } from '../../shared/services/employee.service';
+import { Employee } from '../../store/models/employee.model';
+import { query, query_failure, query_success } from './employee.actions';
 
 @Injectable()
 export class EmployeeEffects {
@@ -25,9 +25,9 @@ export class EmployeeEffects {
                         }),
                         catchError((error) => {
                             return of(query_failure(error));
-                        })
+                        }),
                     );
             }));
-        }
+        },
     );
 }
