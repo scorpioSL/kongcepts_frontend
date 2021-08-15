@@ -45,7 +45,7 @@ const _authReducer = createReducer(initialState
             user: null,
             loading: false,
         };
-    })
+    }),
 );
 
 export function AuthReducer(state, action) {
