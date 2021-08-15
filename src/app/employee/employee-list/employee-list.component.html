@@ -1,0 +1,8 @@
+<nb-card>
+    <nb-card-header>
+        Employees
+    </nb-card-header>
+    <nb-card-body [nbSpinner]="loading$ | async">
+        <ng2-smart-table [settings]="settings" [source]="source"></ng2-smart-table>
+    </nb-card-body>
+</nb-card>
