@@ -14,6 +14,7 @@ export class EmployeeService {
   }
 
   public query(model?: SharedQueryModel): Observable<any> {
-    return this.http.get<Array<Employee>>(`${this.url}query`);
+    return this.http.get<Array<Employee>>(
+      `${this.url}query?limit=${model.limit}&offset=${model.offset}&order=${model.order}`);
   }
 }

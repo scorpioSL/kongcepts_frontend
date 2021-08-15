@@ -4,7 +4,7 @@ export class SharedQueryModel {
     order?: 'ASC' | 'DESC';
 
     constructor() {
-        this.limit = 11;
+        this.limit = 100000;
         this.offset = 0;
     }
 

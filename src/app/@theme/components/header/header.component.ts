@@ -2,12 +2,13 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NbMediaBreakpointsService, NbMenuService, NbSidebarService, NbThemeService } from '@nebular/theme';
 
 import { LayoutService } from '../../../@core/utils';
-import { map, takeUntil } from 'rxjs/operators';
-import { Observable, Subject } from 'rxjs';
+import { filter, map, takeUntil } from 'rxjs/operators';
+import { Observable, Subject, Subscription } from 'rxjs';
 import { Employee } from '../../../store/models/employee.model';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../../store/models/app-state.model';
 import { getUser } from '../../../auth/store/auth.selector';
+import { logout } from '../../../auth/store/auth.actions';
 
 @Component({
   selector: 'ngx-header',
@@ -19,6 +20,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private destroy$: Subject<void> = new Subject<void>();
   public userPictureOnly: boolean = false;
   public user$: Observable<Employee>;
+  private menuSubscription: Subscription;
 
   themes = [
     {
@@ -41,7 +43,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   currentTheme = 'default';
 
-  userMenu = [{ title: 'Profile' }, { title: 'Log out' }];
+  userMenu = [{ title: 'Log out' }];
 
   constructor(private sidebarService: NbSidebarService,
     private menuService: NbMenuService,
@@ -54,6 +56,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.currentTheme = this.themeService.currentTheme;
+
+    this.menuSubscription = this.menuService.onItemClick().subscribe(() => {
+      this.store.dispatch(logout());
+    });
 
     this.user$ = this.store.select(getUser);
 
@@ -76,6 +82,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.destroy$.next();
     this.destroy$.complete();
+    if (this.menuSubscription) {
+      this.menuSubscription.unsubscribe();
+    }
   }
 
   changeTheme(themeName: string) {
